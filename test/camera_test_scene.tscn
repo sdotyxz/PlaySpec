@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://cameratestscene001"]
+
+[ext_resource type="Script" path="res://scripts/camera_orbit.gd" id="1_camera"]
+
+[sub_resource type="StandardMaterial3D" id="1_cube_material"]
+albedo_color = Color(0.2, 0.6, 1.0, 1.0)
+roughness = 0.5
+metallic = 0.2
+
+[sub_resource type="Environment" id="1_env"]
+background_mode = 1
+background_color = Color(0.2, 0.2, 0.25, 1.0)
+ambient_light_source = 2
+ambient_light_color = Color(0.3, 0.3, 0.35, 1.0)
+ambient_light_energy = 0.6
+
+[node name="CameraTestScene" type="Node3D"]
+
+[node name="ReferenceCube" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+size = Vector3(2, 2, 2)
+material = SubResource("1_cube_material")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 10, 10)
+projection = 1
+size = 10.0
+script = ExtResource("1_camera")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 5, 10, 5)
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 2.0
+light_energy = 1.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("1_env")
+
+[node name="ControlsInfo" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+text = "相机控制：
+鼠标左键拖拽 - 旋转视角
+滚轮 - 缩放"
+font_size = 32
+outline_size = 4
+horizontal_alignment = 1
+vertical_alignment = 1
+billboard = 1
