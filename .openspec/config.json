@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "PlaySpec",
+    "type": "godot",
+    "engine_version": "4.6.stable"
+  },
+  "tools": {
+    "provider": "opencode",
+    "enabled": true,
+    "features": [
+      "code_generation",
+      "code_review",
+      "refactoring",
+      "documentation"
+    ]
+  },
+  "godot": {
+    "main_scene": "res://scenes/main.tscn",
+    "script_language": "gdscript",
+    "target_platforms": ["desktop", "web"]
+  },
+  "ai": {
+    "model": "kimi-k2.5-free",
+    "context_awareness": true,
+    "gdscript_expertise": true
+  }
+}

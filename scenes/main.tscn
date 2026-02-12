@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8yvxg3ulq3a"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_abc12"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_abc12")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 540.0
+offset_top = 320.0
+offset_right = 740.0
+offset_bottom = 400.0
+text = "PlaySpec
+Project Ready!"
+horizontal_alignment = 1

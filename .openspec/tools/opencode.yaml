@@ -1,0 +1,28 @@
+# OpenSpec Tools Configuration for OpenCode
+
+tools:
+  - name: code_search
+    description: Search codebase for patterns and symbols
+    enabled: true
+  
+  - name: file_operations
+    description: Read, write, and edit files
+    enabled: true
+  
+  - name: bash_commands
+    description: Execute shell commands
+    enabled: true
+  
+  - name: web_search
+    description: Search web for documentation and references
+    enabled: true
+  
+  - name: code_analysis
+    description: Analyze code structure and dependencies
+    enabled: true
+
+godot_specific:
+  - gdscript_linting: true
+  - scene_analysis: true
+  - node_tree_navigation: true
+  - signal_connection_inspection: true
