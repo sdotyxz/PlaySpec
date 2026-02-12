@@ -7,6 +7,10 @@ var target_angle: float = 0.0   # Target angle for smooth interpolation
 var is_dragging: bool = false
 var drag_start_pos: Vector2
 
+# Auto-rotation for demo/recording mode
+var auto_rotate: bool = false
+const AUTO_ROTATE_SPEED: float = 0.3  # Rotation speed in radians per second
+
 # Configuration
 const ROTATION_SPEED: float = 0.005  # Mouse sensitivity
 const ZOOM_SPEED: float = 2.0        # Scroll wheel sensitivity
@@ -15,6 +19,9 @@ const MAX_SIZE: float = 30.0         # Maximum orthographic size
 const SMOOTHING: float = 10.0        # Interpolation speed for smooth rotation
 
 func _ready():
+	# Check if auto-rotation is enabled via environment or metadata
+	auto_rotate = get_meta("auto_rotate", false)
+	
 	# Set initial camera position at (10, 10, 10)
 	position = Vector3(10, 10, 10)
 	
@@ -48,6 +55,10 @@ func _input(event):
 		target_angle -= delta_x * ROTATION_SPEED
 
 func _process(delta):
+	# Auto-rotation mode for demos
+	if auto_rotate:
+		target_angle += AUTO_ROTATE_SPEED * delta
+	
 	# Smoothly interpolate current angle to target angle
 	current_angle = lerp(current_angle, target_angle, SMOOTHING * delta)
 	
