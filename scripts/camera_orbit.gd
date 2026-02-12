@@ -19,9 +19,6 @@ const MAX_SIZE: float = 30.0         # Maximum orthographic size
 const SMOOTHING: float = 10.0        # Interpolation speed for smooth rotation
 
 func _ready():
-	# Check if auto-rotation is enabled via environment or metadata
-	auto_rotate = get_meta("auto_rotate", false)
-	
 	# Set initial camera position at (10, 10, 10)
 	position = Vector3(10, 10, 10)
 	
@@ -34,6 +31,10 @@ func _ready():
 	
 	# Set initial orthographic size
 	size = 10.0
+
+func enable_auto_rotate():
+	auto_rotate = true
+	print("Camera auto-rotation enabled")
 
 func _input(event):
 	# Handle mouse button press/release

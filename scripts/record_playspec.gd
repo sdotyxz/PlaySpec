@@ -23,13 +23,13 @@ func _init():
 	await process_frame
 	await process_frame
 	
-	# 启用相机自动旋转模式
+	# 启用相机自动旋转模式（调用方法而非设置meta）
 	var camera = scene.get_node_or_null("Camera")
-	if camera:
-		camera.set_meta("auto_rotate", true)
+	if camera and camera.has_method("enable_auto_rotate"):
+		camera.enable_auto_rotate()
 		print("   ✓ Auto-rotation enabled on camera")
 	else:
-		print("   ⚠ Camera node not found, auto-rotation not enabled")
+		print("   ⚠ Camera not found or auto-rotate not available")
 	
 	print("   ✓ Scene loaded, recording started")
 	print("   Duration: " + str(RECORDING_DURATION) + " seconds")
